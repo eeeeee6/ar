@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>命運輪盤</title>
+    <title>簡單的輪盤遊戲</title>
     <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
+        #roulette {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            position: relative;
+            border: 16px solid;
+            animation: spin 5s linear infinite;
         }
-        img {
-            width: 200px;
-            height: 200px;
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <h1>命運輪盤</h1>
-    <p>命運輪盤是一種象徵人生起伏不定的比喻。就像在輪盤遊戲中，你永遠不知道球會落在哪個號碼上，人生的命運也常常充滿了不確定性和驚奇。</p>
-    <img src="roulette.jpg" alt="命運輪盤的圖片">
+    <div id="roulette"></div>
+    <button id="spinButton" onclick="spin()">Spin</button>
+    <p id="result"></p>
+
+    <script>
+        const spin = () => {
+            const result = Math.floor(Math.random() * 36); // 輪盤有0-36共37個數字
+            document.getElementById('result').innerText = `輪盤停在了數字${result}`;
+        }
+    </script>
 </body>
 </html>
