@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>簡單的輪盤遊戲</title>
+    <title>Spin the Wheel</title>
     <style>
-        #roulette {
-            height: 50px;
-            width: 50px;
+        #wheel {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             position: relative;
             border: 16px solid;
-            animation: spin 5s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            background: red;
+            background-image: linear-gradient(60deg, #f00 16.6%, #ff0 16.6%, #ff0 33.2%, #0f0 33.2%, #0f0 49.8%, #0ff 49.8%, #0ff 66.4%, #00f 66.4%, #00f 83%, #f0f 83%);
         }
     </style>
 </head>
 <body>
-    <div id="roulette"></div>
-    <button id="spinButton" onclick="spin()">Spin</button>
-    <p id="result"></p>
-
+    <div id="wheel"></div>
+    <button onclick="spin()">Spin</button>
     <script>
+        const wheel = document.getElementById('wheel');
         const spin = () => {
-            const result = Math.floor(Math.random() * 36); // 輪盤有0-36共37個數字
-            document.getElementById('result').innerText = `輪盤停在了數字${result}`;
-        }
+            let deg = Math.floor(5000 + Math.random() * 5000);
+            wheel.style.transition = 'all 10s ease-out';
+            wheel.style.transform = `rotate(${deg}deg)`;
+        };
     </script>
 </body>
 </html>
